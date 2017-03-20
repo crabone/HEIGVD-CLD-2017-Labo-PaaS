@@ -1,5 +1,14 @@
 # LABORATOIRE 3 - GOOGLE APP ENGINE
 
+Dans les prédédents laboratoire, nous nous sommes initiés aux infrastructures
+cloud de type Infrastructure as a Service (IaaS). Nous avions dû déployer une
+application web en utilisant les services web d'Amazon (AWS). Pour ce
+laboratoire, nous nous intéressons aux infrastructures cloud de type Platform
+as a Service (PaaS) et plus particulièrement au service Google App Engine (GAE).
+Nous allons, premièrement, déployer une application web simple. Ensuite, nous
+allons écrire notre propre application web, utilisant des service GAE. Pour
+terminer, nous testerons sa performance.
+
 ## ÉTUDIANTS
 
 * FRANCHINI Fabien
