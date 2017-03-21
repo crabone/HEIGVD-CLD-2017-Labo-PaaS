@@ -23,6 +23,126 @@ terminer, nous testerons sa performance.
 
 ## TÂCHE 1: DEPLOYMENT D'UNE APPLICATION WEB SIMPLE
 
+Dans ce chapitre, nous allons déployer une application simpliste pour découvrir
+le service GAE. Premièrement, nous allons initialiser un nouveau projet dans
+l'IDE Eclipse. Ensuite, nous allons le déployer sur GAE.
+
+Pour la suite, nous assumons qu'un compte GMail et GAE a été créé. De plus,
+utilisons la machine virtuelle pré-configurée pour ce laboratoire. Pour de plus
+amples informations, se référer au
+[tutoriel de mise en route](https://cyberlearn.hes-so.ch/mod/page/view.php?id=665111).
+
+![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_1.png)
+
+![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_2a.png)
+
+![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_2b.png)
+
+![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_3.png)
+
+![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_4a.png)
+
+![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_4b.png)
+
+![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_5.png)
+
+![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_6.png)
+
+```java
+package ch.heigvd.cld.lab;
+
+import java.io.IOException;
+
+@SuppressWarnings("serial")
+public class Lab03Servlet extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    resp.setContentType("text/plain");
+    resp.getWriter().println("Hello, world");
+    }
+}
+```
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>Lab03</servlet-name>
+		<servlet-class>ch.heigvd.cld.lab.Lab03Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Lab03</servlet-name>
+		<url-pattern>/lab03</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
+```
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <application></application>
+  <version>1</version>
+
+  <!--
+    Allows App Engine to send multiple requests to one instance in parallel:
+  -->
+  <threadsafe>true</threadsafe>
+
+  <!-- Configure java.util.logging -->
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+  </system-properties>
+
+  <!--
+    HTTP Sessions are disabled by default. To enable HTTP sessions specify:
+
+      <sessions-enabled>true</sessions-enabled>
+
+    It's possible to reduce request latency by configuring your application to
+    asynchronously write HTTP session data to the datastore:
+
+      <async-session-persistence enabled="true" />
+
+    With this feature enabled, there is a very small chance your app will see
+    stale session data. For details, see
+    https://cloud.google.com/appengine/docs/java/config/appconfig#Java_appengine_web_xml_Enabling_sessions
+  -->
+
+</appengine-web-app>
+```
+
+![Run application locally step-by-step](assets/images/01-run_locally_step_1.png)
+
+![Run application locally step-by-step](assets/images/01-run_locally_step_2.png)
+
+![Run application locally step-by-step](assets/images/01-run_locally_step_3.png)
+
+![Run application locally step-by-step](assets/images/01-run_locally_step_4.png)
+
+![Run application locally step-by-step](assets/images/01-run_locally_step_5.png)
+
+![GAE create project](assets/images/01-gae_init_step_1.png)
+
+![GAE create project](assets/images/01-gae_init_step_2.png)
+
+![GAE create project](assets/images/01-gae_init_step_3.png)
+
+![Deploy application on GAE step-by-step](assets/images/01-deploy_web_app_step_1.png)
+
+![Deploy application on GAE step-by-step](assets/images/01-deploy_web_app_step_2.png)
+
+![Deploy application on GAE step-by-step](assets/images/01-deploy_web_app_step_3.png)
+
+![Deploy application on GAE step-by-step](assets/images/01-deploy_web_app_step_4.png)
+
+![Deploy application on GAE step-by-step](assets/images/01-deploy_web_app_step_5.png)
+
 ## TÂCHE 2: DEVELOPPEMENT D'UN SERVET UTILISANT LE DATASTORE
 
 ## TÂCHE 3: TEST DE PERFORMANCE DES ÉCRITURES DANS LE DATASTORE
