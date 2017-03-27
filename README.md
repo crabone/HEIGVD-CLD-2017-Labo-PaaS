@@ -47,6 +47,8 @@ amples informations, se référer au
 ![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_5.png)
 
 ![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_6.png)
+A la suite de cette création nous avons une serie de fichiers et package généré automatiquement nous allons nous intéressé plus particulièrementau fichier Lab03Servelet.java, web.xml et appengine-web.xml.
+Le code suivant est généré automatiquement dans le fichier Lab03Servelet on remarque qu'il s'agit là d'un servelet ayant pour but de répondre aux requêtes HTTP. Ainsi d'après ce code il devrait (le servelet) répondre à la requête HTTP de type GET au travers de la methode doGet en envoyant un message "hello world" en clair.
 
 ```java
 package ch.heigvd.cld.lab;
@@ -61,6 +63,7 @@ public class Lab03Servlet extends HttpServlet {
     }
 }
 ```
+Le code suivant est celui du fichier web.xml. En effet, il s'agit d'un fichier de configuration classique de notre Java EE ou plus exactement d'un fichier descripteur de deploiement. Ainsi, il décrit les classes et les configurations de notre application web on voit par exemple là que notre servelet Lab03 est appelé lorsque le visiteeur essaie d'accéder à la page /lab03 de notre site. On peut deduire de cela que ce fichier permet d'effectuer un mapping entre l'URL de la requête et un code worker.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -82,6 +85,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</welcome-file-list>
 </web-app>
 ```
+Le code suivant est celui du fichier appengine-web.xml. Il s'agit là d'un fichier de configuration propre à google appengine, il permet de donner des informations sur notre application app Engine (nom, version et autre), d'activer certaine fonctionnalités comme les sessions, services googles et permet également à l'application de traiter ou pas les requêtes concurrentes par la balise ``threadsafe`` 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
