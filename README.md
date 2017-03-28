@@ -211,7 +211,7 @@ L'image suivante représente le test de notre application après le déploiement
 ![App Engine_test_servelet](assets/images/testservelet2_deploi.PNG)
 
 ## TÂCHE 3: TEST DE PERFORMANCE DES ÉCRITURES DANS LE DATASTORE
-dans cette partie nous allons tester les performances des servlets et plus particulièrement celle du 2ème servlet. Pour cela nous allons d'abord mesurer les performances du servlet ``lab03`` ensuite ceux du servlet ``DataStoreWrite`` et enfin effectuer une comparaison entre leur temps de latence.
+dans cette partie nous allons tester les performances des servlets et plus particulièrement celle du 2ème servlet. Pour cela nous allons d'abord mesurer les performances du servlet ``lab03`` ensuite ceux du servlet ``DataStoreWrite`` en effectuant plusieurs requête GET à partir de l'outil de test Apache JMeter et enfin effectuer une comparaison entre leur temps de latence.
 
 performances servlet ``lab03``: 
 Resume
@@ -255,4 +255,3 @@ En ce qui concerne les quotas des ressources utilisées dans ce test nous avons 
 
 ## CONCLUSION
 
-Ce laboratoire nous a permis de nous familiariser avec 
