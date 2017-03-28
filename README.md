@@ -47,6 +47,8 @@ amples informations, se référer au
 ![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_5.png)
 
 ![Eclipse initialization step-by-step](assets/images/01-eclipse_initialization_step_6.png)
+
+
 A la suite de cette création nous avons une serie de fichiers et package généré automatiquement nous allons nous intéressé plus particulièrementau fichier Lab03Servelet.java, web.xml et appengine-web.xml.
 Le code suivant est généré automatiquement dans le fichier Lab03Servelet on remarque qu'il s'agit là d'un servelet ayant pour but de répondre aux requêtes HTTP. Ainsi d'après ce code il devrait (le servelet) répondre à la requête HTTP de type GET au travers de la methode doGet en envoyant un message "hello world" en clair.
 
@@ -63,6 +65,7 @@ public class Lab03Servlet extends HttpServlet {
     }
 }
 ```
+
 Le code suivant est celui du fichier web.xml. En effet, il s'agit d'un fichier de configuration classique de notre Java EE ou plus exactement d'un fichier descripteur de deploiement. Ainsi, il décrit les classes et les configurations de notre application web on voit par exemple là que notre servelet Lab03 est appelé lorsque le visiteeur essaie d'accéder à la page /lab03 de notre site. On peut deduire de cela que ce fichier permet d'effectuer un mapping entre l'URL de la requête et un code worker.
 
 ```xml
@@ -149,6 +152,58 @@ Le code suivant est celui du fichier appengine-web.xml. Il s'agit là d'un fichi
 
 ## TÂCHE 2: DEVELOPPEMENT D'UN SERVET UTILISANT LE DATASTORE
 
+Dans cette partie nous allons créer un servelet qui permettra d'écrire des données dans le DATASTORE. tout d'abord nous allons tester le fonctionnement du servelet mis à disposition pour ce labo ``DataStoreWriteSimple.java`` ceci dans le but d'apprendre la syntaxe à utiliser pour enregistrer les données dans le datastore. Ensuite nous allons implementer notre servelet ``DataStoreWrite`` en suivant les spécifications données, enfin nous allons tester notre servelet en local et le deployer sur App Engine.
+
+le code suivant represente le code de notre servelet ``DataStoreWrite``.Comme vous pouvez le constatez il est très simple, dans un premier temps on recupère la valeur du paramètre `_kind`, s'il n'existe on arrête car on ne pourrais créer une entité dont le nom n'existe pas disons que ce paramètre est obligatoire contrairement au paramètre `_key` qui peut être généré automatiquement. Si le paramètre `_kind` est défini alors on crée notre entité, on récupère la liste des noms de paramètre mis à disposition, on defini les propriété de notre entité avec les paramètres et leur contenu enfin l'entité est sauvegardé dans la base de donnée  
+
+```
+package ch.heigvd.cld.lab;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
+@SuppressWarnings("serial")
+public class DatastoreWrite extends HttpServlet{
+	@Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+                         throws ServletException, IOException {
+		
+	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        
+        String _kind = req.getParameter("_kind");
+	if(_kind == null)
+	  return;
+        Entity myEntity = new Entity(_kind);
+        Enumeration<String> params = req.getParameterNames();
+      
+        for(Enumeration<String> p = params;p.hasMoreElements();){
+        	String s  = p.nextElement();
+        	if(!s.equals("_kind")){
+        		myEntity.setProperty(s, req.getParameter(s));
+        	}
+        	
+        }
+        datastore.put(myEntity);
+    }
+
+}
+```
+L'image suivante représente le test de notre servelet en local :
+
+
+L'image suivante représente le test de notre application après le déploiement : 
+
 ## TÂCHE 3: TEST DE PERFORMANCE DES ÉCRITURES DANS LE DATASTORE
+
 
 ## CONCLUSION
