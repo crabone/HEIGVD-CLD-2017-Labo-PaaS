@@ -152,9 +152,9 @@ Le code suivant est celui du fichier appengine-web.xml. Il s'agit là d'un fichi
 
 ## TÂCHE 2: DEVELOPPEMENT D'UN SERVET UTILISANT LE DATASTORE
 
-Dans cette partie nous allons créer un servelet qui permettra d'écrire des données dans le DATASTORE. tout d'abord nous allons tester le fonctionnement du servelet mis à disposition pour ce labo ``DataStoreWriteSimple.java`` ceci dans le but d'apprendre la syntaxe à utiliser pour enregistrer les données dans le datastore. Ensuite nous allons implementer notre servelet ``DataStoreWrite`` en suivant les spécifications données, enfin nous allons tester notre servelet en local et le deployer sur App Engine.
+Dans cette partie nous allons créer un servlet qui permettra d'écrire des données dans le DATASTORE. tout d'abord nous allons tester le fonctionnement du servelet mis à disposition pour ce labo ``DataStoreWriteSimple.java`` ceci dans le but d'apprendre la syntaxe à utiliser pour enregistrer les données dans le datastore. Ensuite nous allons implementer notre servelet ``DataStoreWrite`` en suivant les spécifications données, enfin nous allons tester notre servlet en local et le deployer sur App Engine.
 
-le code suivant represente le code de notre servelet ``DataStoreWrite``.Comme vous pouvez le constatez il est très simple, dans un premier temps on recupère la valeur du paramètre `_kind`, s'il n'existe on arrête car on ne pourrais créer une entité dont le nom n'existe pas disons que ce paramètre est obligatoire contrairement au paramètre `_key` qui peut être généré automatiquement. Si le paramètre `_kind` est défini alors on crée notre entité, on récupère la liste des noms de paramètre mis à disposition, on defini les propriété de notre entité avec les paramètres et leur contenu enfin l'entité est sauvegardé dans la base de donnée  
+le code suivant represente le code de notre servelet ``DataStoreWrite``.Comme vous pouvez le constatez il est très simple, dans un premier temps on recupère la valeur du paramètre `_kind`, s'il n'existe on arrête car on ne pourrais créer une entité dont le nom n'existe pas disons que ce paramètre est obligatoire contrairement au paramètre `_key` qui peut être généré automatiquement. Si le paramètre `_kind` est défini alors on crée notre entité, on récupère la liste des noms de paramètre mis à disposition, on defini les propriétés de notre entité avec les paramètres et leur contenu enfin l'entité est sauvegardé dans la base de donnée  
 
 ```
 package ch.heigvd.cld.lab;
@@ -211,6 +211,35 @@ L'image suivante représente le test de notre application après le déploiement
 ![App Engine_test_servelet](assets/images/testservelet2_deploi.PNG)
 
 ## TÂCHE 3: TEST DE PERFORMANCE DES ÉCRITURES DANS LE DATASTORE
+dans cette partie nous allons tester les performances des servlets et plus particulièrement celle du 2ème servlet. Pour cela nous allons d'abord mesurer les performances du servlet ``lab03`` ensuite ceux du servlet ``DataStoreWrite`` et enfin effectuer une comparaison entre leur temps de latence.
+
+performances servlet ``lab03``: 
+# Resume
+![Test performance servelet 1](assets/images/Resume2.PNG)
+
+# Instance
+![Test performance servelet 1](assets/images/instance2.PNG)
+
+# Latence
+![Test performance servelet 1](assets/images/latence2.PNG)
+
+# JMeter
+![Test performance servelet 1](assets/images/JMeter1.PNG)
+
+performances servelet ``DataStoreWrite``   
+
+# Resume
+![Test performance servelet 2](assets/images/Resume3.PNG)
+
+# Instance
+![Test performance servelet 2](assets/images/instance3.PNG)
+
+# Latence
+![Test performance servelet 2](assets/images/latence3.PNG)
+
+# JMeter
+![Test performance servelet 1](assets/images/JMeter3.PNG)
+
 
 
 ## CONCLUSION
