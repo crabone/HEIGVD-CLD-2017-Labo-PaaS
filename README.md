@@ -214,32 +214,45 @@ L'image suivante représente le test de notre application après le déploiement
 dans cette partie nous allons tester les performances des servlets et plus particulièrement celle du 2ème servlet. Pour cela nous allons d'abord mesurer les performances du servlet ``lab03`` ensuite ceux du servlet ``DataStoreWrite`` et enfin effectuer une comparaison entre leur temps de latence.
 
 performances servlet ``lab03``: 
-# Resume
+Resume
 ![Test performance servelet 1](assets/images/Resume2.PNG)
 
-# Instance
+Instance
 ![Test performance servelet 1](assets/images/instance2.PNG)
 
-# Latence
+Latence
 ![Test performance servelet 1](assets/images/latence2.PNG)
 
-# JMeter
+JMeter
 ![Test performance servelet 1](assets/images/JMeter1.PNG)
 
 performances servelet ``DataStoreWrite``   
 
-# Resume
+Resume
 ![Test performance servelet 2](assets/images/Resume3.PNG)
 
-# Instance
+Instance
 ![Test performance servelet 2](assets/images/instance3.PNG)
 
-# Latence
+Latence
 ![Test performance servelet 2](assets/images/latence3.PNG)
 
-# JMeter
+JMeter
 ![Test performance servelet 1](assets/images/JMeter3.PNG)
+
+après comparaison des 2  servlets et surtout en se fiant au temps de reponse dans les différents cas on remarque le servlet ``datastorewrite``a un temps de réponse plus elevé que celui du servlet ``lab03``(voire figure ci dessous) ce qui peut s'expliquer par le fait que le servlet lab03 n'effectue qu'une simple requête ne faisant pas vraiment intervenir le dataStore il n'effectue pas d'ecriture!! contrairement à datastoreWrite qui lui écrit dans la base de donnée et nous savons tous que l'ecriture dans une base de donnée est quelque fois coûteuse.
+
+![comparison performance ](assets/images/tempsDeLatenceMoyen.PNG)
+
+En ce qui concerne les quotas des ressources utilisées dans ce test nous avons uniquement 2 qui sont à 1% (voire figure ci dessous)
+`Heure de l'instance frontend` : durée en heure de l'exécution de l'instance qui dans notre cas est relativement petit (manipulation n'a pas durée)
+`Stockage du code et des fichiers statiques` : représente la taille du code et des fichiers stockés
+
+![comparison performance ](assets/images/QuotasUtilises.PNG)
+
 
 
 
 ## CONCLUSION
+
+Ce laboratoire nous a permis de nous familiariser avec 
