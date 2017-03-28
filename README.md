@@ -339,13 +339,13 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 
 Nous testons à présent le Servlet en local.
 
-[Application test step-by-step](assets/images/02-local_00.png)
+![Application test step-by-step](assets/images/02-local_00.png)
 
-[Application test step-by-step](assets/images/02-local_00b.png)
+![Application test step-by-step](assets/images/02-local_00b.png)
 
-[Application test step-by-step](assets/images/02-local_01.png)
+![Application test step-by-step](assets/images/02-local_01.png)
 
-[Application test step-by-step](assets/images/02-local_02.png)
+![Application test step-by-step](assets/images/02-local_02.png)
 
 Pour la dernière requête, nous obtenons un nombre d'opération d'écriture
 étrange, 6. Alors que nous avons spécifier que 4 paramètres. En interne,
@@ -359,7 +359,7 @@ suivante: `https://console.cloud.google.com/datastore/entities/query`
 pour trouver cet endroit il faut spécifier "Datastore" dans la barre de
 recherche.
 
-[Online datastore](assets/images/02-online_datastore.png)
+![Online datastore](assets/images/02-online_datastore.png)
 
 ## TÂCHE 3: TEST DE PERFORMANCE DES ÉCRITURES DANS LE DATASTORE
 
