@@ -198,10 +198,17 @@ public class DatastoreWrite extends HttpServlet{
 
 }
 ```
+Pour tester ce servelet nous avons dû rajouter les lignes suivantes dans le fichier ``web.xml``
+
+![Servelet_using_datastore](assets/images/rajoutweb_servelet2.png)
+
 L'image suivante représente le test de notre servelet en local :
 
+![Local_test_servelet](assets/images/testlocal_servelet2.png)
 
 L'image suivante représente le test de notre application après le déploiement : 
+
+![App Engine_test_servelet](assets/images/testservelet2_deploi.png)
 
 ## TÂCHE 3: TEST DE PERFORMANCE DES ÉCRITURES DANS LE DATASTORE
 
